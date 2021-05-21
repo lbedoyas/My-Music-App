@@ -1,0 +1,82 @@
+import React, {useEffect, useState} from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import './SongsLists.scss'
+
+const arrayInfoLocalStorage = [];
+const SongsLists = ({tracks}) => {
+    const [userLocal, setUserLocal] = useState('');
+    useEffect(()=>{
+        getUserLocalStorage();
+    },[tracks])
+    const useStyles = makeStyles({
+        root: {
+            maxWidth: 345,
+        },
+    });
+    const classes = useStyles();
+    const setLocalStorage = (track) => {
+        arrayInfoLocalStorage.push(track)
+        window.localStorage.setItem("Songs", JSON.stringify(arrayInfoLocalStorage) );
+        console.log(arrayInfoLocalStorage);
+    }
+    const getUserLocalStorage = () => {
+        let userLocal = window.localStorage.getItem('user');
+        setUserLocal(userLocal);
+    }
+    return (
+        <>
+            <div className="row">
+                <div className="col-12">
+                    <div className="SongsLists__Welcome">
+                        Bienvenido: {userLocal}
+                    </div> 
+                </div>
+            </div>
+            <div className="row">
+            {tracks.map((track) => {
+                    return (
+                    <div className="songsList__cards" key={track.id}>
+                        <div className="col-12">
+                        <Card className={classes.root}>
+                                <CardActionArea>
+                                    <CardMedia
+                                    component="img"
+                                    alt="Contemplative Reptile"
+                                    height="140"
+                                    image={track.album.images[0].url}
+                                    title="Contemplative Reptile"
+                                    />
+                                    <CardContent>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                    {track.name}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        {track.artists[0].name}
+                                    </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                                <CardActions style={{justifyContent: 'center'}}>
+                                    <Button size="small" color="primary" onClick={() => setLocalStorage(track)} >
+                                        <div className="addFavorites">
+                                            Add to Favorites
+                                        </div>
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                        </div>
+                    </div>
+                    )
+                })}
+            </div>
+        </>
+    )
+}
+
+export default SongsLists

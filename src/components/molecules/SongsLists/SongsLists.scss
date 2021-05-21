@@ -1,0 +1,23 @@
+@import "../../../styles/styles.scss";
+
+.songsList__cards{
+    display: flex;
+    flex-direction: row;
+}
+.MuiPaper-root {
+    border-radius: 12% !important;
+    margin: 20px;
+}
+.arrayInfoLocalStorage{
+    justify-content: center !important;
+}
+.addFavorites{
+    color: $ColorFavorite;
+}
+.SongsLists__Welcome{
+    padding: 30px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}

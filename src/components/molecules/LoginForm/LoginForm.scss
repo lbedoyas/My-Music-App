@@ -1,0 +1,60 @@
+@import "../../../styles/styles.scss";
+
+.Login__Form {
+    display: flex;
+    justify-content: center;
+}
+
+.form__inputs{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form__inputs input{
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.Login__btn{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    margin: 20px;
+}
+
+.Login__btn button{
+    width: 100%;
+    font-size: 12px;
+}
+
+.Modal__btn{
+    display: flex;
+    justify-content: center;
+}
+
+.modal-footer{
+    display: flex;
+    justify-content: center !important;
+    align-content: center;
+}
+
+.Modal__Error span{
+    color: $colorDanger;
+}
+
+.Login__Error{
+    display: flex;
+    justify-content: center;
+}
+
+.Login__Error span{
+    color: $colorDanger;
+    padding: 10px;
+}
+
+.Modal__Success{
+    color: $colorDanger;
+    font-size: 20px;
+}
